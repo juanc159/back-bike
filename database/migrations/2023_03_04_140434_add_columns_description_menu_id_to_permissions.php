@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('permissions', function (Blueprint $table) {
-            $table->string("description");
-            $table->integer("menu_id")->nullable();
+            $table->string('description');
+            $table->integer('menu_id')->nullable();
             $table->softDeletes();
         });
     }
@@ -24,8 +24,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('permissions', function (Blueprint $table) {
-            $table->dropColumn("description");
-            $table->dropColumn("menu_id");
+            $table->dropColumn('description');
+            $table->dropColumn('menu_id');
         });
     }
 };

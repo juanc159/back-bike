@@ -11,44 +11,47 @@ class MenuRepository extends BaseRepository
         parent::__construct($modelo);
     }
 
-    public function list($request = [],$with=[])
+    public function list($request = [], $with = [])
     {
         $data = $this->model->with($with)->where(function ($query) use ($request) {
-            if(!empty($request["permissions"])){
-                $query->whereIn("requiredPermission",$request["permissions"]);
+            if (! empty($request['permissions'])) {
+                $query->whereIn('requiredPermission', $request['permissions']);
             }
-            if(!empty($request["title"])){
-                $query->where("title",$request["title"]);
+            if (! empty($request['title'])) {
+                $query->where('title', $request['title']);
             }
-            if(!empty($request["to"])){
-                $query->where("to",$request["to"]);
+            if (! empty($request['to'])) {
+                $query->where('to', $request['to']);
             }
-            if(!empty($request["icon"])){
-                $query->where("icon",$request["icon"]);
+            if (! empty($request['icon'])) {
+                $query->where('icon', $request['icon']);
             }
         })
-        ->whereNull("father")
-        ->where(function ($query) use ($request) {
-            if (! empty($request['searchQuery'])) {
-                $query->orWhere('title', 'like', '%'.$request['searchQuery'].'%');
-                $query->orWhere('to', 'like', '%'.$request['searchQuery'].'%');
-                $query->orWhere('icon', 'like', '%'.$request['searchQuery'].'%');
-            }
-        });
+            ->whereNull('father')
+            ->where(function ($query) use ($request) {
+                if (! empty($request['searchQuery'])) {
+                    $query->orWhere('title', 'like', '%'.$request['searchQuery'].'%');
+                    $query->orWhere('to', 'like', '%'.$request['searchQuery'].'%');
+                    $query->orWhere('icon', 'like', '%'.$request['searchQuery'].'%');
+                }
+            });
 
         if (empty($request['typeData'])) {
-            $data = $data->paginate($request["perPage"] ?? 10);
+            $data = $data->paginate($request['perPage'] ?? 10);
         } else {
             $data = $data->get();
         }
+
         return $data;
     }
 
-
     public function store($request)
     {
-        if (!empty($request["id"])) $data = $this->model->find($request["id"]);
-        else $data = $this->model;
+        if (! empty($request['id'])) {
+            $data = $this->model->find($request['id']);
+        } else {
+            $data = $this->model;
+        }
 
         foreach ($request->all() as $key => $value) {
             $data[$key] = $request[$key];

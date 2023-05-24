@@ -14,8 +14,9 @@ class RoleListResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $indice = strpos($this->name,'_');
+        $indice = strpos($this->name, '_');
         $name = substr($this->name, 0, $indice);
+
         return [
             'id' => $this->id,
             'company_id' => $this->company_id,

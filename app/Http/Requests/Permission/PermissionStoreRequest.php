@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests\Permission;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Contracts\Validation\Validator;
+
 class PermissionStoreRequest extends FormRequest
 {
     /**
@@ -23,18 +24,18 @@ class PermissionStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name" => "required",
-            "description" => "required",
-            "menu_id" => "required",
+            'name' => 'required',
+            'description' => 'required',
+            'menu_id' => 'required',
         ];
     }
 
     public function messages(): array
     {
         return [
-            "name.required" => "El campo es obligatorio",
-            "description.required" => "El campo es obligatorio",
-            "menu_id.required" => "El campo es obligatorio",
+            'name.required' => 'El campo es obligatorio',
+            'description.required' => 'El campo es obligatorio',
+            'menu_id.required' => 'El campo es obligatorio',
         ];
     }
 

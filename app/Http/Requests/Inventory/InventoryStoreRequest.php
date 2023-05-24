@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\Inventory;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class UserStoreRequest extends FormRequest
+class InventoryStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -40,18 +40,14 @@ class UserStoreRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'El campo es obligatorio',
-            'email.required' => 'El campo es obligatorio',
-            'email.regex' => 'El Correo debe contener un @ y una extensión',
-            'password.required' => 'El campo es obligatorio',
-            'role_id.required' => 'El campo es obligatorio',
-            'identification.required' => 'El campo es obligatorio',
-            'phone.required' => 'El campo es obligatorio',
-            'identification.max' => 'El campo debe contener máximo 15 caracteres',
-            'identification.min' => 'El campo debe contener mínimo 5 caracteres',
-            'phone.max' => 'El campo debe contener máximo 15 caracteres',
-            'phone.min' => 'El campo debe contener mínimo 10 caracteres',
-            // "company_id.required" => "El campo es obligatorio",
+            'item.required' => 'El campo es obligatorio',  
+            'reference.required' => 'El campo es obligatorio',  
+            'brand.required' => 'El campo es obligatorio',  
+            'model.required' => 'El campo es obligatorio',  
+            'color.required' => 'El campo es obligatorio',  
+            'plate.required' => 'El campo es obligatorio',  
+            'registrationSite.required' => 'El campo es obligatorio',  
+            'value.required' => 'El campo es obligatorio',  
         ];
     }
 

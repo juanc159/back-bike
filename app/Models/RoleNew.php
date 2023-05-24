@@ -3,15 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Spatie\Permission\Models\Role;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Permission\Models\Role;
 
 class RoleNew extends Role
 {
     use HasFactory,SoftDeletes;
 
-    public function company(){
-        return $this->hasOne(Company::class,'id','company_id');
+    public function company()
+    {
+        return $this->hasOne(Company::class, 'id', 'company_id');
     }
 }
- 

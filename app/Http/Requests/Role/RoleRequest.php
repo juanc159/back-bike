@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Role;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Contracts\Validation\Validator;
 
 class RoleRequest extends FormRequest
 {

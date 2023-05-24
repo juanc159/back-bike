@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('roles', function (Blueprint $table) {
-            $table->string("description");
-            $table->integer("company_id")->nullable();
+            $table->string('description');
+            $table->integer('company_id')->nullable();
             $table->softDeletes();
         });
     }
@@ -24,8 +24,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('roles', function (Blueprint $table) {
-            $table->dropColumn("description");
-            $table->dropColumn("company_id");
+            $table->dropColumn('description');
+            $table->dropColumn('company_id');
         });
     }
 };

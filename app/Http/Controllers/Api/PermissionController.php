@@ -14,6 +14,7 @@ use Throwable;
 class PermissionController extends Controller
 {
     private $permissionRepository;
+
     private $menuRepository;
 
     public function __construct(PermissionRepository $permissionRepository, MenuRepository $menuRepository)
@@ -23,9 +24,10 @@ class PermissionController extends Controller
     }
 
     public function list(Request $request)
-    { 
+    {
         $data = $this->permissionRepository->list($request->all());
         $permission = PermissionListResource::collection($data);
+
         return [
             'permission' => $permission,
             'lastPage' => $data->lastPage(),
@@ -43,14 +45,18 @@ class PermissionController extends Controller
             $data = $this->permissionRepository->store($request);
             DB::commit();
 
-            $msg = "agregado";
-            if (!empty($request["id"])) $msg = "modificado";
+            $msg = 'agregado';
+            if (! empty($request['id'])) {
+                $msg = 'modificado';
+            }
 
-            return response()->json(["code" => 200, "message" => "Registro " . $msg . " correctamente", "data" => $data]);
+            return response()->json(['code' => 200, 'message' => 'Registro '.$msg.' correctamente', 'data' => $data]);
         } catch (Throwable $th) {
             DB::rollBack();
-            return response()->json(["code" => 500, "message" => $th->getMessage()], 500);
+
+            return response()->json(['code' => 500, 'message' => $th->getMessage()], 500);
         }
+
         return $this->permissionRepository->store($request);
     }
 
@@ -59,15 +65,19 @@ class PermissionController extends Controller
         try {
             DB::beginTransaction();
             $data = $this->permissionRepository->find($id);
-            if($data){
+            if ($data) {
                 $data->delete();
-                $msg = "Registro eliminado correctamente";
-            }else $msg = "El registro no existe";
+                $msg = 'Registro eliminado correctamente';
+            } else {
+                $msg = 'El registro no existe';
+            }
             DB::commit();
-            return response()->json(["code" => 200, "message" => $msg]);
+
+            return response()->json(['code' => 200, 'message' => $msg]);
         } catch (Throwable $th) {
             DB::rollBack();
-            return response()->json(["code" => 500, "message" => $th->getMessage()], 500);
+
+            return response()->json(['code' => 500, 'message' => $th->getMessage()], 500);
         }
     }
 
@@ -77,16 +87,19 @@ class PermissionController extends Controller
             DB::beginTransaction();
             $data = $this->permissionRepository->find($id);
             DB::commit();
-            return response()->json(["code" => 200, "data" => $data]);
+
+            return response()->json(['code' => 200, 'data' => $data]);
         } catch (Throwable $th) {
             DB::rollBack();
-            return response()->json(["code" => 500, "message" => $th->getMessage()], 500);
+
+            return response()->json(['code' => 500, 'message' => $th->getMessage()], 500);
         }
     }
 
     public function dataForm()
     {
-        $menus =  $this->menuRepository->list(['typeData'=>'todos']);
+        $menus = $this->menuRepository->list(['typeData' => 'todos']);
+
         return response()->json(['menus' => $menus]);
     }
 }

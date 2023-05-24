@@ -16,11 +16,12 @@ class BaseRepository
     public function new($data = [])
     {
         return new $this->model($data);
-    } 
+    }
+
     public function newModelInstance()
     {
         return $this->model::newModelInstance();
-    } 
+    }
 
     public function all()
     {
@@ -37,7 +38,7 @@ class BaseRepository
         return $this->model->with($with)->get();
     }
 
-    public function find($id, $with = [], $select = '*',$withCount=[])
+    public function find($id, $with = [], $select = '*', $withCount = [])
     {
         return $this->model->select($select)->withCount($withCount)->with($with)->find($id);
     }
@@ -48,6 +49,7 @@ class BaseRepository
 
         return $model;
     }
+
     public function make(Model $model)//esto es para simular un registro
     {
         $model->make();
@@ -94,5 +96,4 @@ class BaseRepository
     {
         return $this->model->where($key, $value)->get();
     }
-
 }

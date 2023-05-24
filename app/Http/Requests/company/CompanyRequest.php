@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\company;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Contracts\Validation\Validator;
 
 class CompanyRequest extends FormRequest
 {
@@ -39,9 +39,10 @@ class CompanyRequest extends FormRequest
             'startDate' => 'required|date_format:Y-m-d|before:'.'endDate',
             'endDate' => 'required',
         ];
-        if(!empty($this->id)){
+        if (! empty($this->id)) {
             unset($rule['logo']);
         }
+
         return $rule;
     }
 
@@ -51,7 +52,7 @@ class CompanyRequest extends FormRequest
             'name.required' => 'El campo es obligatorio',
             'name.max' => 'El campo debe tener máximo 30 caracteres',
             'name.min' => 'El campo debe tener mínimo 3 caracteres',
-            'logo.required' => 'El campo es obligatorio', 
+            'logo.required' => 'El campo es obligatorio',
             'email.required' => 'El campo es obligatorio',
             'email.regex' => 'El Correo debe contener un @ y una extensión',
             'nit.required' => 'El campo es obligatorio',

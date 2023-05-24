@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Menu\MenuRequest;
 use App\Http\Resources\MenuListResource;
@@ -22,6 +23,7 @@ class MenuController extends Controller
     {
         $data = $this->companyRepository->list($request->all());
         $menu = MenuListResource::collection($data);
+
         return [
             'menu' => $menu,
             'data' => $data,
@@ -38,14 +40,18 @@ class MenuController extends Controller
             $data = $this->companyRepository->store($request);
             DB::commit();
 
-            $msg = "agregado";
-            if (!empty($request["id"])) $msg = "modificado";
+            $msg = 'agregado';
+            if (! empty($request['id'])) {
+                $msg = 'modificado';
+            }
 
-            return response()->json(["code" => 200, "message" => "Registro " . $msg . " correctamente", "data" => $data]);
+            return response()->json(['code' => 200, 'message' => 'Registro '.$msg.' correctamente', 'data' => $data]);
         } catch (Throwable $th) {
             DB::rollBack();
-            return response()->json(["code" => 500, "message" => $th->getMessage()], 500);
+
+            return response()->json(['code' => 500, 'message' => $th->getMessage()], 500);
         }
+
         return $this->companyRepository->store($request);
     }
 
@@ -54,15 +60,19 @@ class MenuController extends Controller
         try {
             DB::beginTransaction();
             $data = $this->companyRepository->find($id);
-            if($data){
+            if ($data) {
                 $data->delete();
-                $msg = "Registro eliminado correctamente";
-            }else $msg = "El registro no existe";
+                $msg = 'Registro eliminado correctamente';
+            } else {
+                $msg = 'El registro no existe';
+            }
             DB::commit();
-            return response()->json(["code" => 200, "message" => $msg]);
+
+            return response()->json(['code' => 200, 'message' => $msg]);
         } catch (Throwable $th) {
             DB::rollBack();
-            return response()->json(["code" => 500, "message" => $th->getMessage()], 500);
+
+            return response()->json(['code' => 500, 'message' => $th->getMessage()], 500);
         }
     }
 
@@ -71,14 +81,18 @@ class MenuController extends Controller
         try {
             DB::beginTransaction();
             $data = $this->companyRepository->find($id);
-            if($data){
-                $msg = "El registro existe";
-            }else $msg = "El registro no existe";
+            if ($data) {
+                $msg = 'El registro existe';
+            } else {
+                $msg = 'El registro no existe';
+            }
             DB::commit();
-            return response()->json(["code" => 200, "data" => $data , "message" => $msg]);
+
+            return response()->json(['code' => 200, 'data' => $data, 'message' => $msg]);
         } catch (Throwable $th) {
             DB::rollBack();
-            return response()->json(["code" => 500, "message" => $th->getMessage()], 500);
+
+            return response()->json(['code' => 500, 'message' => $th->getMessage()], 500);
         }
     }
 }

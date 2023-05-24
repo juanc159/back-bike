@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Validator::extend('null_or_required', function ($attribute, $value, $parameters, $validator) {
-            return ($value === 'null' || !empty($value));
+            return $value === 'null' || ! empty($value);
         });
     }
 }

@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId("role_id")->nullable()->constrained("roles");
-            $table->foreignId("company_id")->nullable()->constrained("companies");
+            $table->foreignId('role_id')->nullable()->constrained('roles');
+            $table->foreignId('company_id')->nullable()->constrained('companies');
         });
     }
 
@@ -23,8 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropConstrainedForeignId("role_id");
-            $table->dropConstrainedForeignId("company_id");
+            $table->dropConstrainedForeignId('role_id');
+            $table->dropConstrainedForeignId('company_id');
         });
     }
 };

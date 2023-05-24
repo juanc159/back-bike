@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Menu;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Contracts\Validation\Validator;
 
 class MenuRequest extends FormRequest
 {
@@ -23,7 +23,7 @@ class MenuRequest extends FormRequest
      */
     public function rules(): array
     {
-        return[
+        return [
             'title' => 'required',
             'to' => 'required',
             'icon' => 'required',
