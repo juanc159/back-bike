@@ -35,6 +35,20 @@ class MenuSeeder extends Seeder
                 'icon' => 'mdi-arrow-right-thin-circle-outline',
                 'requiredPermission' => 'admin.role.index',
             ],
+            [
+                'id' => 4,
+                'title' => 'Terceros',
+                'to' => 'Admin-Third-Index',
+                'icon' => 'mdi-arrow-right-thin-circle-outline',
+                'requiredPermission' => 'admin.third.index',
+            ],
+            [
+                'id' => 5,
+                'title' => 'Inventario',
+                'to' => 'Admin-Inventory-Index',
+                'icon' => 'mdi-arrow-right-thin-circle-outline',
+                'requiredPermission' => 'admin.inventory.index',
+            ],
             /*[
                 "title" => "Menu",
                 "to" => "Admin-Menu-Index",

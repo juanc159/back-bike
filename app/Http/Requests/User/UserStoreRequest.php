@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests\User;
 
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-
+use Illuminate\Contracts\Validation\Validator;
 class UserStoreRequest extends FormRequest
 {
     /**
@@ -22,29 +21,28 @@ class UserStoreRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
      */
     public function rules(): array
-    {
+    { 
         $rule = [
-            "item" => "required",
-            "reference" => "required",
-            "brand" => "required",
-            "model" => "required",
-            "color" => "required",
-            "plate" => "required",
-            "registrationSite" => "required",
-            "value" => "required"
-        ]; 
-
+            "name" => "required", 
+            'email' => 'required|regex:"^[^@]+@[^@]+\.[a-zA-Z]{2,}$"',
+            "role_id" => "required", 
+            "identification" => "required|max:15|min:5", 
+            "phone" => "required|max:15|min:10", 
+        ];
+        if(!$this->id){
+            $rule["password"] = "required";
+        }
         return $rule;
     }
 
     public function messages(): array
     {
         return [
-            'name.required' => 'El campo es obligatorio',
-            'email.required' => 'El campo es obligatorio',
+            "name.required" => "El campo es obligatorio",
+            "email.required" => "El campo es obligatorio",
             'email.regex' => 'El Correo debe contener un @ y una extensión',
-            'password.required' => 'El campo es obligatorio',
-            'role_id.required' => 'El campo es obligatorio',
+            "password.required" => "El campo es obligatorio",
+            "role_id.required" => "El campo es obligatorio",
             'identification.required' => 'El campo es obligatorio',
             'phone.required' => 'El campo es obligatorio',
             'identification.max' => 'El campo debe contener máximo 15 caracteres',

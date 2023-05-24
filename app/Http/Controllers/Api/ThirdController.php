@@ -2,29 +2,28 @@
 
 namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
-
-use App\Http\Requests\Inventory\InventoryStoreRequest;
-use App\Http\Resources\InventoryListResource;
-use App\Repositories\InventoryRepository;
+use App\Http\Requests\Third\ThirdStoreRequest;
+use App\Http\Resources\ThirdListResource;
+use App\Repositories\ThirdRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 
-class InventoryController extends Controller
+class ThirdController extends Controller
 {
-    private $inventoryRepository;
+    private $thirdRepository;
 
-    public function __construct(InventoryRepository $inventoryRepository)
+    public function __construct(ThirdRepository $thirdRepository)
     {
-        $this->inventoryRepository = $inventoryRepository;
+        $this->thirdRepository = $thirdRepository;
     }
 
     public function list(Request $request)
     {
-        $data = $this->inventoryRepository->list($request->all());
-        $inventories = InventoryListResource::collection($data);
+        $data = $this->thirdRepository->list($request->all());
+        $thirds = ThirdListResource::collection($data);
         return [
-            'inventories' => $inventories,
+            'thirds' => $thirds,
             'lastPage' => $data->lastPage(),
             'totalData' => $data->total(),
             'totalPage' => $data->perPage(),
@@ -32,11 +31,11 @@ class InventoryController extends Controller
         ];
     }
 
-    public function store(InventoryStoreRequest $request)
+    public function store(ThirdStoreRequest $request)
     {
         try {
             DB::beginTransaction();
-            $data = $this->inventoryRepository->store($request->all());
+            $data = $this->thirdRepository->store($request->all());
             DB::commit();
 
             $msg = "agregado";
@@ -53,7 +52,7 @@ class InventoryController extends Controller
     {
         try {
             DB::beginTransaction();
-            $data = $this->inventoryRepository->find($id);
+            $data = $this->thirdRepository->find($id);
             if ($data) {
                 $data->delete();
                 $msg = "Registro eliminado correctamente";
@@ -70,7 +69,7 @@ class InventoryController extends Controller
     {
         try {
             DB::beginTransaction();
-            $data = $this->inventoryRepository->find($id);
+            $data = $this->thirdRepository->find($id);
             if ($data) {
                 $msg = "Registro encontrado con éxito";
             } else $msg = "El registro no existe";

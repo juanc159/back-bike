@@ -32,6 +32,18 @@ class PermissionSeeder extends Seeder
                 'description' => 'Visualizar roles',
                 'menu_id' => 3,
             ],
+            [
+                'id' => 4,
+                'name' => 'admin.third.index',
+                'description' => 'Visualizar Terceros',
+                'menu_id' => 4,
+            ],
+            [
+                'id' => 5,
+                'name' => 'admin.inventory.index',
+                'description' => 'Visualizar Inventario',
+                'menu_id' => 5,
+            ],
             /*[
                 "name" => "admin.menu.index",
                 "description" => "Visualizar menu",
