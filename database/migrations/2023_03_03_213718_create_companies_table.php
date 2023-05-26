@@ -19,14 +19,9 @@ return new class extends Migration
             $table->string('nit');
             $table->string('phone');
             $table->string('address');
-            $table->string('description')->nullable();
             $table->string('nameLegalRepresentative');
-            $table->string('phoneLegalRepresentative');
-            $table->string('startDate');
-            $table->string('endDate');
-            $table->boolean('state')->default(1);
-            $table->string('headerReport')->nullable();
-            $table->string('footerReport')->nullable();
+            $table->string('phoneLegalRepresentative'); 
+            $table->boolean('state')->default(1); 
             $table->string('identification_rep'); //cedula legal
             $table->string('address_rep');
             $table->string('email_rep');

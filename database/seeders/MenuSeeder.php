@@ -49,6 +49,13 @@ class MenuSeeder extends Seeder
                 'icon' => 'mdi-arrow-right-thin-circle-outline',
                 'requiredPermission' => 'admin.inventory.index',
             ],
+            [
+                'id' => 5,
+                'title' => 'Ventas',
+                'to' => 'Admin-Sales-Index',
+                'icon' => 'mdi-arrow-right-thin-circle-outline',
+                'requiredPermission' => 'admin.sales.index',
+            ],
             /*[
                 "title" => "Menu",
                 "to" => "Admin-Menu-Index",

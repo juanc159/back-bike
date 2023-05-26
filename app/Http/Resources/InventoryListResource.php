@@ -15,9 +15,9 @@ class InventoryListResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            "id" => $this->id,
-            "item" => $this->item,
+            "id" => $this->id, 
             "reference" => $this->reference,
+            "vehicleType" => $this->vehicleType,
             "brand" => $this->brand,
             "model" => $this->model,
             "color" => $this->color,

@@ -44,6 +44,12 @@ class PermissionSeeder extends Seeder
                 'description' => 'Visualizar Inventario',
                 'menu_id' => 5,
             ],
+            [
+                'id' => 6,
+                'name' => 'admin.sales.index',
+                'description' => 'Visualizar Ventas',
+                'menu_id' => 6,
+            ],
             /*[
                 "name" => "admin.menu.index",
                 "description" => "Visualizar menu",

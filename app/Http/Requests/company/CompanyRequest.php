@@ -33,11 +33,8 @@ class CompanyRequest extends FormRequest
             'identification_rep' => 'required|min:8|max:15',
             'address_rep' => 'required|min:2|max:50',
             'email_rep' => 'required|regex:"^[^@]+@[^@]+\.[a-zA-Z]{2,}$"',
-            //'description' => 'required',
             'nameLegalRepresentative' => 'required|min:6',
             'phoneLegalRepresentative' => 'required|min:10|max:15',
-            'startDate' => 'required|date_format:Y-m-d|before:'.'endDate',
-            'endDate' => 'required',
         ];
         if (! empty($this->id)) {
             unset($rule['logo']);
@@ -61,17 +58,13 @@ class CompanyRequest extends FormRequest
             'phone.required' => 'El campo es obligatorio',
             'phone.min' => 'El campo debe tener minimo 10 caracteres',
             'phone.max' => 'El campo debe tener maximo 15 caracteres',
-            'address.required' => 'El campo es obligatorio',
-            //'description.required' => 'El campo es obligatorio',
+            'address.required' => 'El campo es obligatorio', 
             'nameLegalRepresentative.required' => 'El campo es obligatorio',
             'nameLegalRepresentative.min' => 'El campo debe tener minimo 6 caracteres',
             'phoneLegalRepresentative.required' => 'El campo es obligatorio',
             'phoneLegalRepresentative.min' => 'El campo debe tener minimo 10 caracteres',
             'phoneLegalRepresentative.max' => 'El campo debe tener maximo 15 caracteres',
-            'startDate.required' => 'El campo es obligatorio',
-            'startDate.before' => 'El campo fecha inicial debe ser menor a la fecha final',
-            'startDate.date_format' => 'El campo fecha inicial debe ser una fecha válida',
-            'endDate.required' => 'El campo es obligatorio',
+             
             'identification_rep.required' => 'El campo es obligatorio',
             'address_rep.required' => 'El campo es obligatorio',
             'email_rep.required' => 'El campo es obligatorio',

@@ -16,20 +16,45 @@ class CompanySeeder extends Seeder
         $data->name = 'Bike';
         $data->email = 'bike@gmail.com';
         $data->nit = '123456789';
-        $data->phone = '04147206169';
+        $data->phone = '123456789';
         $data->address = 'Kenedy';
-        $data->user_id = 1;
-        $data->description = 'Empresa Bike';
+        $data->user_id = 1; 
+        $data->nameLegalRepresentative = 'Alejandro';
+        $data->phoneLegalRepresentative = '123456789';
+        $data->identification_rep = '123456789';
+        $data->email_rep = 'bike@gmail.com';
+        $data->address_rep = 'bogota';
+        $data->logo = 'null'; 
+        $data->save();
+
+        $data = new Company();
+        $data->name = 'Yo Tramito';
+        $data->email = 'yo_tramito@gmail.com';
+        $data->nit = '123456789';
+        $data->phone = '123456789';
+        $data->address = 'Kenedy';
+        $data->user_id = 1; 
         $data->nameLegalRepresentative = 'Alejandro';
         $data->phoneLegalRepresentative = '123456789';
         $data->identification_rep = '64555646546';
         $data->email_rep = 'bike@gmail.com';
         $data->address_rep = 'bogota';
-        $data->startDate = '2023-03-03';
-        $data->endDate = '2030-03-03';
-        $data->logo = 'null';
-        $data->headerReport = null;
-        $data->footerReport = null;
+        $data->logo = 'null'; 
+        $data->save();
+
+        $data = new Company();
+        $data->name = 'Su Service Taller';
+        $data->email = 'su_service_taller@gmail.com';
+        $data->nit = '123456789';
+        $data->phone = '123456789';
+        $data->address = 'Kenedy';
+        $data->user_id = 1; 
+        $data->nameLegalRepresentative = 'Alejandro';
+        $data->phoneLegalRepresentative = '123456789';
+        $data->identification_rep = '64555646546';
+        $data->email_rep = 'bike@gmail.com';
+        $data->address_rep = 'bogota';
+        $data->logo = 'null'; 
         $data->save();
     }
 }

@@ -25,7 +25,14 @@ class InventoryRepository extends BaseRepository
         })
         ->where(function ($query) use ($request) {
             if (! empty($request['searchQuery'])) {
-                $query->orWhere('name', 'like', '%'.$request['searchQuery'].'%');
+                $query->orWhere('vehicleType', 'like', '%'.$request['searchQuery'].'%');
+                $query->orWhere('reference', 'like', '%'.$request['searchQuery'].'%');
+                $query->orWhere('brand', 'like', '%'.$request['searchQuery'].'%');
+                $query->orWhere('model', 'like', '%'.$request['searchQuery'].'%');
+                $query->orWhere('color', 'like', '%'.$request['searchQuery'].'%');
+                $query->orWhere('plate', 'like', '%'.$request['searchQuery'].'%');
+                $query->orWhere('registrationSite', 'like', '%'.$request['searchQuery'].'%');
+                $query->orWhere('value', 'like', '%'.$request['searchQuery'].'%');
             }
         })
         ->orderBy($request["sort_field"] ?? "id",$request["sort_direction"] ?? 'asc');

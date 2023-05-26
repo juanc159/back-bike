@@ -16,6 +16,6 @@ class RoleSeeder extends Seeder
         $data->name = 'Administrador';
         $data->description = 'Administrador';
         $data->save();
-        $data->permissions()->sync([1, 2, 3]);
+        $data->permissions()->sync([1, 2, 3,4,5,6]);
     }
 }
