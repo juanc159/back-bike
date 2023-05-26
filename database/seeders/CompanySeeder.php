@@ -24,7 +24,7 @@ class CompanySeeder extends Seeder
         $data->identification_rep = '123456789';
         $data->email_rep = 'bike@gmail.com';
         $data->address_rep = 'bogota';
-        $data->logo = 'null'; 
+        $data->logo = 'http://127.0.0.1:8000/storage/users/user_1/company/company_1/logo//izSJZkluX0AWBgMmdhX4XAmDcvJQRaB4NQ4XakJ8.png'; 
         $data->save();
 
         $data = new Company();
@@ -39,7 +39,7 @@ class CompanySeeder extends Seeder
         $data->identification_rep = '64555646546';
         $data->email_rep = 'bike@gmail.com';
         $data->address_rep = 'bogota';
-        $data->logo = 'null'; 
+        $data->logo = 'http://127.0.0.1:8000/storage/users/user_1/company/company_2/logo//izSJZkluX0AWBgMmdhX4XAmDcvJQRaB4NQ4XakJ8.png'; 
         $data->save();
 
         $data = new Company();
@@ -54,7 +54,7 @@ class CompanySeeder extends Seeder
         $data->identification_rep = '64555646546';
         $data->email_rep = 'bike@gmail.com';
         $data->address_rep = 'bogota';
-        $data->logo = 'null'; 
+        $data->logo = 'http://127.0.0.1:8000/storage/users/user_1/company/company_3/logo//izSJZkluX0AWBgMmdhX4XAmDcvJQRaB4NQ4XakJ8.png'; 
         $data->save();
     }
 }
