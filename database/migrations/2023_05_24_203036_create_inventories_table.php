@@ -20,8 +20,11 @@ return new class extends Migration
             $table->string("color");
             $table->string("plate");
             $table->string("registrationSite");
-            $table->string("value");
+            $table->string("purchaseValue");
+            $table->string("saleValue");
             $table->enum("vehicleType",["moto","carro"]);
+            $table->enum("state",["Ingresado","Separado","Vendido"]);
+            $table->string("days");
             $table->timestamps();
         });
     }

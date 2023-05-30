@@ -30,7 +30,8 @@ class InventoryStoreRequest extends FormRequest
             "color" => "required",
             "plate" => "required",
             "registrationSite" => "required",
-            "value" => "required"
+            "purchaseValue" => "required",
+            "saleValue" => "required"
         ]; 
 
         return $rule;
@@ -45,7 +46,8 @@ class InventoryStoreRequest extends FormRequest
             'color.required' => 'El campo es obligatorio',  
             'plate.required' => 'El campo es obligatorio',  
             'registrationSite.required' => 'El campo es obligatorio',  
-            'value.required' => 'El campo es obligatorio',  
+            'purchaseValue.required' => 'El campo es obligatorio',  
+            'saleValue.required' => 'El campo es obligatorio',  
         ];
     }
 

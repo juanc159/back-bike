@@ -23,7 +23,10 @@ class InventoryListResource extends JsonResource
             "color" => $this->color,
             "plate" => $this->plate,
             "registrationSite" => $this->registrationSite,
-            "value" => $this->value
+            "purchaseValue" => $this->purchaseValue,
+            "saleValue" => $this->saleValue,
+            "state" => $this->state,
+            "days" => $this->days,
         ];
     }
 }

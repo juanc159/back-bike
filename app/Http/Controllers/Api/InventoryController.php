@@ -81,4 +81,22 @@ class InventoryController extends Controller
             return response()->json(["code" => 500, "message" => $th->getMessage()], 500);
         }
     } 
+    public function changeState(Request $request)
+    {
+        try {
+            DB::beginTransaction(); 
+            $data = $this->inventoryRepository->changeState($request->input("id"),$request->input("state"),"state");
+            if ($data) {
+                $msg = "Registro modificado con éxito";
+            } else $msg = "El registro no existe";
+            DB::commit();
+            return response()->json(["code" => 200, "data" => $data, "message" => $msg]);
+        } catch (Throwable $th) {
+            DB::rollBack();
+            return response()->json(["code" => 500, "message" => $th->getMessage()], 500);
+        }
+    } 
+
+
+
 }
