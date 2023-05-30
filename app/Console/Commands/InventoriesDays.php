@@ -20,14 +20,14 @@ class InventoriesDays extends Command
      *
      * @var string
      */
-    protected $description = 'Calculo diario de invntario';
+    protected $description = 'Calculo diario de inventario';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        $inventoires =  Inventory::get();
+        $inventoires =  Inventory::where("company_id",1)->get();
         foreach ($inventoires as $key => $value) {
             $fechaRegistro = $value->created_at;
             $fechaActual = Carbon::now();

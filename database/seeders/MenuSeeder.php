@@ -44,7 +44,7 @@ class MenuSeeder extends Seeder
             ],
             [
                 'id' => 5,
-                'title' => 'Inventario',
+                'title' => 'Ingresos',
                 'to' => 'Admin-Inventory-Index',
                 'icon' => 'mdi-arrow-right-thin-circle-outline',
                 'requiredPermission' => 'admin.inventory.index',
