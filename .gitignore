@@ -48,9 +48,9 @@ Thumbs.db
 
 
 # ignorar
-storage/
+# storage/
 .env
-/public/storage
-public/storage
+# /public/storage
+# public/storage
 /vendor
 vendor/
