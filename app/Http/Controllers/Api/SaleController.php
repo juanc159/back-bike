@@ -110,6 +110,7 @@ class SaleController extends Controller
     {
         try {
             $request["typeData"] = "todos";
+            $request["noState"] = ['Vendido'];
             $inventories = $this->inventoryRepository->list($request);
             $thirds = $this->thirdRepository->list($request);
             

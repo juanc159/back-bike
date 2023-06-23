@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('thirds', function (Blueprint $table) {
+        Schema::create('administrations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->constrained('companies');
-            $table->string("name");
+            $table->string('name');
+            $table->integer('cost');
+            $table->timestamp('init_date');
+            $table->timestamp('final_date');
+            $table->boolean('status');
+            $table->foreignId('company_id')->constrained('companies'); 
             $table->timestamps();
         });
     }
@@ -24,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('thirds');
+        Schema::dropIfExists('administrations');
     }
 };
