@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->nullable()->constrained('companies');
+            $table->foreignId('company_id')->constrained('companies');
             $table->foreignId('inventory_id')->nullable()->constrained('inventories');
             $table->text("description");
+            $table->string('price_vehicle');
             $table->string("total");
+            $table->boolean('barter');
             $table->string("utilities");
             $table->timestamps();
             $table->softDeletes();

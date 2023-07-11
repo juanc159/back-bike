@@ -21,6 +21,7 @@ class SaleListResource extends JsonResource
             "inventory_purchaseValue" => $this->inventory?->purchaseValue,
             "inventory_saleValue" => $this->inventory?->saleValue,
             "description" => $this->description,
+            "price_vehicle" => $this->price_vehicle,
             "total" => $this->total,
             "utilities" => $this->utilities,
         ];

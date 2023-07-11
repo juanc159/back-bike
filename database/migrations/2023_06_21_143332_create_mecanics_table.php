@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('thirds', function (Blueprint $table) {
+        Schema::create('mecanics', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->constrained('companies');
-            $table->string("name");
+            $table->string('name');
+            $table->foreignId('company_id')->constrained('companies'); 
+            $table->string('last_name');
+            $table->integer('identify');
+            $table->boolean('status');
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('thirds');
+        Schema::dropIfExists('mecanics');
     }
 };

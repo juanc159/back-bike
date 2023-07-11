@@ -15,7 +15,7 @@ class MenuSeeder extends Seeder
         $arrayData = [
             [
                 'id' => 1,
-                'title' => 'Mis Clientes',
+                'title' => 'Empresas',
                 'to' => 'Admin-Company-Index',
                 'icon' => 'mdi-arrow-right-thin-circle-outline',
                 'requiredPermission' => 'admin.company.index',
@@ -37,14 +37,14 @@ class MenuSeeder extends Seeder
             ],
             [
                 'id' => 4,
-                'title' => 'Terceros',
+                'title' => 'Gastos',
                 'to' => 'Admin-Third-Index',
                 'icon' => 'mdi-arrow-right-thin-circle-outline',
                 'requiredPermission' => 'admin.third.index',
             ],
             [
                 'id' => 5,
-                'title' => 'Ingresos',
+                'title' => 'Ingreso Vehiculos',
                 'to' => 'Admin-Inventory-Index',
                 'icon' => 'mdi-arrow-right-thin-circle-outline',
                 'requiredPermission' => 'admin.inventory.index',
@@ -56,18 +56,27 @@ class MenuSeeder extends Seeder
                 'icon' => 'mdi-arrow-right-thin-circle-outline',
                 'requiredPermission' => 'admin.sales.index',
             ],
-            /*[
-                "title" => "Menu",
-                "to" => "Admin-Menu-Index",
-                "icon" => "mdi-arrow-right-thin-circle-outline",
-                "requiredPermission" => "admin.menu.index"
+            [
+                'id' => 6,
+                'title' => 'Administrativo',
+                'to' => 'Admin-Administration-Index',
+                'icon' => 'mdi-arrow-right-thin-circle-outline',
+                'requiredPermission' => 'admin.administration.index',
             ],
             [
-                "title" => "Permisos",
-                "to" => "Admin-Permission-Index",
-                "icon" => "mdi-arrow-right-thin-circle-outline",
-                "requiredPermission" => "admin.permission.index"
-            ],  */
+                'id' => 7,
+                'title' => 'Mecanicos',
+                'to' => 'Admin-Mecanic-Index',
+                'icon' => 'mdi-arrow-right-thin-circle-outline',
+                'requiredPermission' => 'admin.mecanic.index',
+            ],
+            [
+                'id' => 8,
+                'title' => 'Ingreso Vehiculo Taller',
+                'to' => 'Admin-IncomeVehicle-Index',
+                'icon' => 'mdi-arrow-right-thin-circle-outline',
+                'requiredPermission' => 'admin.incomeVehicle.index',
+            ]
         ];
         foreach ($arrayData as $key => $value) {
             $data = new Menu();

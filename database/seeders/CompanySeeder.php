@@ -13,12 +13,12 @@ class CompanySeeder extends Seeder
     public function run(): void
     {
         $data = new Company();
-        $data->name = 'Bike';
-        $data->email = 'bike@gmail.com';
+        $data->id = 1;
+        $data->name = 'Bikers';
+        $data->email = 'bikers@gmail.com';
         $data->nit = '123456789';
         $data->phone = '123456789';
         $data->address = 'Kenedy';
-        $data->user_id = 1; 
         $data->nameLegalRepresentative = 'Alejandro';
         $data->phoneLegalRepresentative = '123456789';
         $data->identification_rep = '123456789';
@@ -28,12 +28,12 @@ class CompanySeeder extends Seeder
         $data->save();
 
         $data = new Company();
+        $data->id = 2;
         $data->name = 'Yo Tramito';
         $data->email = 'yo_tramito@gmail.com';
         $data->nit = '123456789';
         $data->phone = '123456789';
         $data->address = 'Kenedy';
-        $data->user_id = 1; 
         $data->nameLegalRepresentative = 'Alejandro';
         $data->phoneLegalRepresentative = '123456789';
         $data->identification_rep = '64555646546';
@@ -43,12 +43,12 @@ class CompanySeeder extends Seeder
         $data->save();
 
         $data = new Company();
+        $data->id = 3;
         $data->name = 'Su Service Taller';
         $data->email = 'su_service_taller@gmail.com';
         $data->nit = '123456789';
         $data->phone = '123456789';
         $data->address = 'Kenedy';
-        $data->user_id = 1; 
         $data->nameLegalRepresentative = 'Alejandro';
         $data->phoneLegalRepresentative = '123456789';
         $data->identification_rep = '64555646546';

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('inventories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->nullable()->constrained('companies'); 
+            $table->foreignId('company_id')->constrained('companies'); 
             $table->string("reference");
             $table->string("brand");
             $table->string("model");
@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string("plate");
             $table->string("registrationSite");
             $table->string("purchaseValue");
-            $table->string("saleValue");
             $table->enum("vehicleType",["moto","carro"]);
             $table->enum("state",["Ingresado","Separado","Vendido"]);
             $table->string("days");

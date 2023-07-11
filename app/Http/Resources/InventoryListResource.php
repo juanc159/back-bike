@@ -24,7 +24,6 @@ class InventoryListResource extends JsonResource
             "plate" => $this->plate,
             "registrationSite" => $this->registrationSite,
             "purchaseValue" => $this->purchaseValue,
-            "saleValue" => $this->saleValue,
             "state" => $this->state,
             "days" => $this->days,
         ];

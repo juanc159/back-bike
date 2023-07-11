@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Inventory;
+namespace App\Http\Requests\Mecanic;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class InventoryStoreRequest extends FormRequest
+class MecanicStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,14 +23,8 @@ class InventoryStoreRequest extends FormRequest
      */
     public function rules(): array
     {
-        $rule = [ 
-            "reference" => "required",
-            "brand" => "required",
-            "model" => "required",
-            "color" => "required",
-            "plate" => "required",
-            "registrationSite" => "required",
-            "purchaseValue" => "required",
+        $rule = [
+            "name" => "required", 
         ]; 
 
         return $rule;
@@ -38,14 +32,8 @@ class InventoryStoreRequest extends FormRequest
 
     public function messages(): array
     {
-        return [   
-            'reference.required' => 'El campo es obligatorio',  
-            'brand.required' => 'El campo es obligatorio',  
-            'model.required' => 'El campo es obligatorio',  
-            'color.required' => 'El campo es obligatorio',  
-            'plate.required' => 'El campo es obligatorio',  
-            'registrationSite.required' => 'El campo es obligatorio',  
-            'purchaseValue.required' => 'El campo es obligatorio',  
+        return [
+            'name.required' => 'El campo es obligatorio',  
         ];
     }
 

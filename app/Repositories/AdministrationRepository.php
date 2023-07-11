@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Repositories;
- 
-use App\Models\Inventory;
 
-class InventoryRepository extends BaseRepository
+use App\Models\Administration;
+
+class AdministrationRepository extends BaseRepository
 {
-    public function __construct(Inventory $modelo)
+    public function __construct(Administration $modelo)
     {
         parent::__construct($modelo);
     }
@@ -17,13 +17,12 @@ class InventoryRepository extends BaseRepository
             if(!empty($request["name"])){
                 $query->where("name","like","%".$request["name"]."%");
             } 
-            if(!empty($request["state"])){
-                $query->where("state","like","%".$request["state"]."%");
-            } 
-            if(!empty($request["noState"])){
-                $query->whereNotIn("state", $request["noState"]);
-            } 
         }) 
+        ->where(function ($query) use ($request) {
+            if(!empty($request["cost"])){
+                $query->where("cost",$request["cost"]);
+            }
+        })
         ->where(function ($query) use ($request) {
             if(!empty($request["company_id"])){
                 $query->where("company_id",$request["company_id"]);
@@ -31,14 +30,7 @@ class InventoryRepository extends BaseRepository
         })
         ->where(function ($query) use ($request) {
             if (! empty($request['searchQuery'])) {
-                $query->orWhere('vehicleType', 'like', '%'.$request['searchQuery'].'%');
-                $query->orWhere('reference', 'like', '%'.$request['searchQuery'].'%');
-                $query->orWhere('brand', 'like', '%'.$request['searchQuery'].'%');
-                $query->orWhere('model', 'like', '%'.$request['searchQuery'].'%');
-                $query->orWhere('color', 'like', '%'.$request['searchQuery'].'%');
-                $query->orWhere('plate', 'like', '%'.$request['searchQuery'].'%');
-                $query->orWhere('registrationSite', 'like', '%'.$request['searchQuery'].'%');
-                $query->orWhere('value', 'like', '%'.$request['searchQuery'].'%');
+                $query->orWhere('name', 'like', '%'.$request['searchQuery'].'%');
             }
         })
         ->orderBy($request["sort_field"] ?? "id",$request["sort_direction"] ?? 'asc');
