@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('identification_rep'); //cedula legal
             $table->string('address_rep');
             $table->string('email_rep');
+            $table->string('base');
             $table->text('logo');
             $table->timestamps();
             $table->softDeletes();

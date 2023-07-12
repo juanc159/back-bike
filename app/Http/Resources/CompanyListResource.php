@@ -23,6 +23,7 @@ class CompanyListResource extends JsonResource
             'logo' => $this->logo,
             'startDate' => $this->startDate,
             'endDate' => $this->endDate,
+            'base' => $this->base,
             'state' => $this->state,
             'identification_rep' => $this->identification_rep,
             'address_rep' => $this->address_rep,

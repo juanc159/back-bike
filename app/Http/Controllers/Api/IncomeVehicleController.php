@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\IncomeVehicle\IncomeVehicleStoreRequest;
 use App\Http\Resources\IncomeVehicleListResource;
+use App\Repositories\CompanyRepository;
 use App\Repositories\IncomeVehicleRepository;
 use App\Repositories\MecanicRepository;
 use App\Repositories\ThirdRepository;
@@ -19,14 +20,16 @@ class IncomeVehicleController extends Controller
     private $mecanicRepository;
 
     private $thirdRepository;
+        private $companyRepository;
 
-    public function __construct(IncomeVehicleRepository $incomeVehicleRepository, MecanicRepository $mecanicRepository, ThirdRepository $thirdRepository)
+    public function __construct(IncomeVehicleRepository $incomeVehicleRepository, MecanicRepository $mecanicRepository, ThirdRepository $thirdRepository,CompanyRepository $companyRepository)
     {
         $this->incomeVehicleRepository = $incomeVehicleRepository;
 
         $this->mecanicRepository = $mecanicRepository;
 
         $this->thirdRepository = $thirdRepository;
+                $this->companyRepository = $companyRepository;
     }
 
     public function list(Request $request)
@@ -47,6 +50,13 @@ class IncomeVehicleController extends Controller
         try {
             DB::beginTransaction();
             $data = $this->incomeVehicleRepository->store($request->all());
+
+            if (!$request->input("id")) {
+                $company = $this->companyRepository->find($request->input("company_id"));
+                $valueBase = $company->base + $request->input("utilites");
+                $this->companyRepository->changeState($request->input("company_id"), $valueBase, "base");
+            }
+
             DB::commit();
 
             $msg = "agregado";

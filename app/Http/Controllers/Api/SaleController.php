@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Sale\SaleStoreRequest;
 use App\Http\Resources\SaleInfoResource;
 use App\Http\Resources\SaleListResource;
+use App\Repositories\CompanyRepository;
 use App\Repositories\InventoryRepository;
 use App\Repositories\SaleRepository;
 use App\Repositories\ThirdRepository;
@@ -19,16 +20,19 @@ class SaleController extends Controller
     private $saleRepository;
     private $inventoryRepository;
     private $thirdRepository;
+    private $companyRepository;
 
     public function __construct(
         SaleRepository $saleRepository,
         InventoryRepository $inventoryRepository,
         ThirdRepository $thirdRepository,
+        CompanyRepository $companyRepository,
         )
     {
         $this->saleRepository = $saleRepository;
         $this->inventoryRepository = $inventoryRepository;
         $this->thirdRepository = $thirdRepository;
+        $this->companyRepository = $companyRepository;
     }
 
     public function list(Request $request)
@@ -56,6 +60,13 @@ class SaleController extends Controller
             unset($request["thirds"]);
             $data = $this->saleRepository->store($request->all());
             $data->thirds()->sync($thirds);
+
+
+            if(!$request->input("id")){
+                $company = $this->companyRepository->find($request->input("company_id"));
+                $valueBase = $company->base + $request->input("utilities");
+                $this->companyRepository->changeState($request->input("company_id"),$valueBase,"base");
+            }
 
             DB::commit();
 

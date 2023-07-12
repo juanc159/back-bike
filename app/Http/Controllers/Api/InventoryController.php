@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\Inventory\InventoryStoreRequest;
 use App\Http\Resources\InventoryListResource;
+use App\Repositories\CompanyRepository;
 use App\Repositories\InventoryRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,10 +14,12 @@ use Throwable;
 class InventoryController extends Controller
 {
     private $inventoryRepository;
+    private $companyRepository;
 
-    public function __construct(InventoryRepository $inventoryRepository)
+    public function __construct(InventoryRepository $inventoryRepository,CompanyRepository $companyRepository)
     {
         $this->inventoryRepository = $inventoryRepository;
+        $this->companyRepository = $companyRepository;
     }
 
     public function list(Request $request)
@@ -35,7 +38,12 @@ class InventoryController extends Controller
     public function store(InventoryStoreRequest $request)
     {
         try {
-            DB::beginTransaction();
+            DB::beginTransaction(); 
+            if(!$request->input("id")){
+                $company = $this->companyRepository->find($request->input("company_id"));
+                $valueBase = $company->base - $request->input("purchaseValue");
+                $this->companyRepository->changeState($request->input("company_id"),$valueBase,"base");
+            }
             $data = $this->inventoryRepository->store($request->all());
             DB::commit();
 
