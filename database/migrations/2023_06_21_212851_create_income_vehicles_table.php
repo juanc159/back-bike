@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('value_labor');
             $table->integer('value_parts');
             $table->integer('total_costs');
+            $table->integer('value_labor40');
             $table->integer('paid_labor')->nullable();
             $table->timestamp('date_pay_labor')->nullable();
             $table->integer('utilites');

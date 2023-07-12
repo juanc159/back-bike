@@ -21,6 +21,7 @@ class SaleInfoResource extends JsonResource
             "inventory_id" => $this->inventory_id,
             "total" => $this->total,
             "utilities" => $this->utilities,
+            "price_vehicle" => $this->price_vehicle,
             "thirds" => $this->thirds->map(function($x){
                 return [
                     "id"=> $x->id,

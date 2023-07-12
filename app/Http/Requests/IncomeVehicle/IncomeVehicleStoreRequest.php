@@ -24,7 +24,7 @@ class IncomeVehicleStoreRequest extends FormRequest
     public function rules(): array
     {
         $rule = [
-            "name" => "required", 
+            // "name" => "required", 
         ]; 
 
         return $rule;
