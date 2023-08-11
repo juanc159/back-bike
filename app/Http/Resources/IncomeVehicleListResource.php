@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Resources;
- 
+
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -16,7 +17,7 @@ class IncomeVehicleListResource extends JsonResource
     {
         return [
             "id" => $this->id,
-            "date_init" => $this->date_init,
+            "date_init" => Carbon::parse($this->date_init)->format("Y-m-d"),
             "company_id" => $this->company_id,
             "mecanic_id" => $this->mecanic_id,
             "type_vehicle" => $this->type_vehicle,
@@ -29,6 +30,7 @@ class IncomeVehicleListResource extends JsonResource
             "paid_labor" => $this->paid_labor,
             "date_pay_labor" => $this->date_pay_labor,
             "utilites" => $this->utilites,
+            "state" => $this->state,
         ];
     }
 }
