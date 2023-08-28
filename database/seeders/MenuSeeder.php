@@ -76,6 +76,13 @@ class MenuSeeder extends Seeder
                 'to' => 'Admin-IncomeVehicle-Index',
                 'icon' => 'mdi-arrow-right-thin-circle-outline',
                 'requiredPermission' => 'admin.incomeVehicle.index',
+            ],
+            [
+                'id' => 10,
+                'title' => 'Publicaciones',
+                'to' => 'Admin-Publication-Index',
+                'icon' => 'mdi-arrow-right-thin-circle-outline',
+                'requiredPermission' => 'admin.publication.index',
             ]
         ];
         foreach ($arrayData as $key => $value) {

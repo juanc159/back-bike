@@ -24,7 +24,7 @@ class RoleSeeder extends Seeder
         $data->name = 'Administrador Bikers';
         $data->description = 'Administrador Bikers';
         $data->save();
-        $data->permissions()->sync([2, 3, 4, 5, 6, 7]);
+        $data->permissions()->sync([2, 3, 4, 5, 6, 7,10]);
 
         $data = new Role();
         $data->id = 3;

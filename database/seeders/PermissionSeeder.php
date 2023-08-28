@@ -68,6 +68,12 @@ class PermissionSeeder extends Seeder
                 "description" => "Ingreso Vehiculos",
                 "menu_id" => 9,
             ],
+            [
+                "id" => 10,
+                "name" => "admin.publication.index",
+                "description" => "Publicaciones",
+                "menu_id" => 10,
+            ],
         ];
         foreach ($arrayData as $key => $value) {
             $data = new Permission();
