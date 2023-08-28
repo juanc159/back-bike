@@ -25,3 +25,6 @@ Route::post('/login', [PassportAuthController::class, 'login'])->name('login');
 Route::middleware('auth:api')->group(function () {
     Route::get('/get-user', [PassportAuthController::class, 'userInfo'])->name('sdasdas');
 });
+
+Route::post('/publication-listData', [PublicationController::class, 'listData'])->name('api.publication.list');
+

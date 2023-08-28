@@ -12,5 +12,6 @@ Route::post('/mecanic-list', [MecanicController::class, 'list'])->name('api.meca
 Route::post('/mecanic-create', [MecanicController::class, 'store'])->name('api.mecanic.store');
 Route::put('/mecanic-update', [MecanicController::class, 'store'])->name('api.mecanic.update');
 Route::delete('/mecanic-delete/{id}', [MecanicController::class, 'delete'])->name('api.mecanic.delete');
-Route::get('/mecanic-info/{id}', [MecanicController::class, 'info'])->name('api.mecanic.info');
+Route::post('/mecanic-info', [MecanicController::class, 'info'])->name('api.mecanic.info');
+Route::post('/mecanic-pay', [MecanicController::class, 'pay'])->name('api.mecanic.info');
  

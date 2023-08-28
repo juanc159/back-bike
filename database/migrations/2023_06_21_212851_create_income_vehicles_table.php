@@ -27,6 +27,7 @@ return new class extends Migration
             $table->integer('paid_labor')->nullable();
             $table->timestamp('date_pay_labor')->nullable();
             $table->integer('utilites');
+            $table->string('state');
             $table->timestamps();
         });
     }
