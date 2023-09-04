@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\PassportAuthController;
+use App\Http\Controllers\Api\PublicationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,4 +28,5 @@ Route::middleware('auth:api')->group(function () {
 });
 
 Route::post('/publication-listData', [PublicationController::class, 'listData'])->name('api.publication.list');
+Route::get('/publication-viewDetail/{id}', [PublicationController::class, 'viewDetail'])->name('api.publication.list');
 

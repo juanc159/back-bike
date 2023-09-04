@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('company_id')->constrained('companies');
             $table->string("name");
-            $table->string("description");
+            $table->longText("description");
             $table->boolean("barter");
             $table->string("price");
             $table->string("offer");
