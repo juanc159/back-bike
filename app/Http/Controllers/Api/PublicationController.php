@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Publication\PublicationStoreRequest;
 use App\Http\Resources\PublicationInfoResource;
+use App\Http\Resources\PublicationListDataResource;
 use App\Http\Resources\PublicationListResource;
 use App\Repositories\PublicationFileRepository;
 use App\Repositories\PublicationRepository;
@@ -26,9 +27,17 @@ class PublicationController extends Controller
     public function listData(Request $request)
     {
         $data = $this->publicationRepository->list(["typeData" => "all","status" =>1]);
-        $publications = PublicationListResource::collection($data);
+        $publications = PublicationListDataResource::collection($data);
         return [
             'publications' => $publications, 
+        ];
+    }
+    public function viewDetail($id)
+    {
+        $data = $this->publicationRepository->find($id);
+        $publication = new PublicationListDataResource($data);
+        return [
+            'publication' => $publication, 
         ];
     }
     public function list(Request $request)

@@ -10,6 +10,6 @@ class Publication extends Model
     use HasFactory;
 
     public function files(){
-        return $this->hasMany(PublicationFile::class,"publication_id","id");
+        return $this->hasMany(PublicationFile::class,"publication_id","id")->orderBy("order","asc");
     }
 }
